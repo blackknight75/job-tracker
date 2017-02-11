@@ -9,7 +9,9 @@ Level of Interest: <%= @job.level_of_interest %>
 
 City: <%= @job.city %>
 <br>
-
+Category: <%= link_to @job.category.title, category_path(@job.category)%></a>
+<br>
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<%= button_to('Edit', edit_company_job_path(@job.company_id, @job.id), method: "get") %>
+<br>
+<%= button_to('Edit', edit_company_job_path(@job.company_id, @job.id), method: :get) %>
 <%= button_to("Delete", company_job_path(@job.company, @job), method: :delete) %>
