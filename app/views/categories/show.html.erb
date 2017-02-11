@@ -1,0 +1,9 @@
+<h1>Category Profile</h1>
+
+Title: <%= @category.title %>
+
+<h4>Jobs</h4>
+<% @jobs.each do |job| %>
+  <%= job.title %> at <%= link_to job.company.name, company_path(job.company) %>
+</br>
+<% end %>
