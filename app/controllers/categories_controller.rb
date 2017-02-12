@@ -18,6 +18,18 @@ class CategoriesController < ApplicationController
     @jobs = (@category.jobs).sort_by { |job| job.title}
   end
 
+  def index
+    @categories = Category.all
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    jobs = category.jobs
+    category.terminate_jobs(jobs)
+    category.destroy
+    redirect_to categories_path
+  end
+
   private
 
   def category_params

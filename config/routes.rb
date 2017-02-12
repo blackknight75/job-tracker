@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :categories, only: [:new, :show, :index, :create]
+  resources :categories
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
