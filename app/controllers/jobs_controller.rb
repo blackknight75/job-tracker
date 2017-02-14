@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+    @contacts = @company.contacts
   end
 
   def new
@@ -24,6 +25,9 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comment = Comment.new
+    @comment.job_id = @job.id
+    @comments = Comment.all
   end
 
   def edit
@@ -41,7 +45,6 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     job = Job.find(params[:id])
     job.destroy
     redirect_to company_jobs_path(params[:company_id])

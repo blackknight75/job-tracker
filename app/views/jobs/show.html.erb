@@ -1,17 +1,42 @@
-Title: <%= @job.title %>
+<h1>Title: <%= @job.title %> </h1>
+
+<strong>Description:</strong> <%= @job.description %>
 <br>
 
-Description: <%= @job.description %>
+<strong>Level of Interest:</strong> <%= @job.level_of_interest %>
 <br>
 
-Level of Interest: <%= @job.level_of_interest %>
+<strong>City:</strong> <%= @job.city %>
 <br>
-
-City: <%= @job.city %>
+<strong>Category:</strong> <%= link_to @job.category.title, category_path(@job.category)%></a>
 <br>
-Category: <%= link_to @job.category.title, category_path(@job.category)%></a>
-<br>
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %>
 <br>
 <%= button_to('Edit', edit_company_job_path(@job.company_id, @job.id), method: :get) %>
 <%= button_to("Delete", company_job_path(@job.company, @job), method: :delete) %>
+<br>
+<br>
+
+<h3>Comments</h3>
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+  <% @comments.each do |comment| %>
+  <div class="card-panel grey lighten-5 z-depth-1">
+    <div class="row valign-wrapper">
+      <div class="col s2">
+        <img src="/assets/image2.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+      </div>
+      <div class="col s10">
+        <span class="black-text">
+          <%= comment.content %>
+          <br>
+          Created: <%= comment.created_at.strftime("%B %d, %Y at %r") %>
+          <br>
+          Updated: <%= comment.updated_at.strftime("%B %d, %Y at %r") %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= render partial: "comments/form" %>

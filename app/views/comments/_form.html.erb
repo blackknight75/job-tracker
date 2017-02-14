@@ -1,0 +1,20 @@
+<div class="row">
+  <%= form_for [@job, @comment] do |f| %>
+    <div class="col s12 m7">
+      <h3 class="header">New Comment</h3>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="/assets/comment.jpg">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <%= f.label :content %>
+            <%= f.text_field :content %>
+
+            <%= f.submit %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
